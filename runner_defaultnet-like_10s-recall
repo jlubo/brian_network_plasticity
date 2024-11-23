@@ -1,0 +1,9 @@
+#!/bin/sh
+
+source run_defaultnet-like_10s-recall 100
+source run_defaultnet-like_10s-recall 150
+source run_defaultnet-like_10s-recall 200
+source run_defaultnet-like_10s-recall 250
+source run_defaultnet-like_10s-recall 300
+source run_defaultnet-like_10s-recall 350
+source run_defaultnet-like_10s-recall 400

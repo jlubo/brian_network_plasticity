@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#python ./brianNetworkConsolidation.py -s_desc="defaultnet det max. activity" -config_file="config_defaultnet_det_max_activity.json" -dt=0.2 -runtime=0.2
+python ./brianNetworkConsolidation.py -s_desc="defaultnet det max. activity" -config_file="config_defaultnet_det_max_activity.json" -dt=0.002 -runtime=0.2

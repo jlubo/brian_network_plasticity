@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# cell assembly size
+N_CA=$1
+
+# number of trials
+num_trials=100
+
+for (( i=1; i <= $num_trials; ++i ))
+do
+    python ./brianNetworkConsolidation.py -s_desc="defaultnet-like 10s-recall" -config_file="config_defaultnet-like.json" -N_CA=${N_CA} -runtime=25 -recall_start=20
+done

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python ./brianNetworkConsolidation.py -s_desc="smallnet2 8h-recall" -config_file="config_smallnet2.json" -runtime=28820 -recall_start=28810

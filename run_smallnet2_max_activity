@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python ./brianNetworkConsolidation.py -s_desc="smallnet2 max. activity, dt=0.2ms" -config_file="config_smallnet2.json" -dt=0.2

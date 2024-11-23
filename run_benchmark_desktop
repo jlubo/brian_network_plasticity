@@ -1,0 +1,65 @@
+#!/bin/sh
+
+# NOTE: the memory tracker called below runs infinitely (in screen), it therefore has to be terminated manually
+
+# set environment variables required to run custom Arbor installation
+source set_arbor_env
+
+benchmark () {
+	# name of the benchmark
+	name=$1
+
+	# script and arguments to be used for the benchmark
+	cmd="python3 $2"
+	echo -e "Benchmark for:\n  $cmd"
+
+	# connectivity file
+	conn_file=$3
+
+	# number of trials to run
+	num_trials=$4
+
+	# sleep interval for memory tracking
+	slpintv=$5
+
+	# directory for storing the results
+	bmdir='benchmark_'$name
+
+	# create and enter directory for the results
+	if [[ -d $bmdir ]]; then
+		# ask for confirmation to remove
+		echo "Remove existing directory '$bmdir' (y/n)?"
+		read answer
+		if [[ $answer == "y" ]]; then
+			sudo rm -R -f $bmdir
+			mkdir $bmdir
+		fi
+	else
+		mkdir $bmdir
+	fi
+	cd $bmdir
+
+	# copy program files
+	cp -r ../*.py .
+	if [[ -n ${conn_file} ]]; then
+		cp ../${conn_file} .
+	fi
+
+	# save system information
+	uname -a > sys_info.log
+	echo "---" >> sys_info.log
+	lscpu >> sys_info.log
+	echo "---" >> sys_info.log
+	sudo dmidecode >> sys_info.log
+
+	# start tracking the memory (adjusted to `cpp_standalone` device)
+	sudo screen -d -m /bin/bash ../track_allocated_memory "main" $slpintv
+
+	# use hyperfine for running the simulation trials and tracking the runtime
+	screen -d -m hyperfine --runs ${num_trials} --export-json 'benchmark_hyperfine.json' "$cmd"
+
+	cd ..
+}
+
+benchmark "CA200_10s-recall" "./brianNetworkConsolidation.py -s_desc='defaultnet-like CA200 10s-recall' -N_CA=200 -runtime=25 -recall_start=20 -config_file='../config_defaultnet-like.json'" "" 10 "2m"
+

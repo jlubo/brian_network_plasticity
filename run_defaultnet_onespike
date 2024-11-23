@@ -1,0 +1,4 @@
+#!/bin/sh
+
+python ./brianNetworkConsolidation.py -s_desc="defaultnet onespike_exc" -config_file="config_defaultnet_onespike_exc.json" -runtime=0.2
+python ./brianNetworkConsolidation.py -s_desc="defaultnet onespike_inh" -config_file="config_defaultnet_onespike_inh.json" -runtime=0.2

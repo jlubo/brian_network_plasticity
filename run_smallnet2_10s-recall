@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python ./brianNetworkConsolidation.py -s_desc="smallnet2 10s-recall" -config_file="config_smallnet2.json" -runtime=25 -recall_start=20

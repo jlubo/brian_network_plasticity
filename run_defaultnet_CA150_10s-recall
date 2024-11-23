@@ -1,0 +1,4 @@
+#!/bin/sh
+
+python ./brianNetworkConsolidation.py -s_desc="defaultnet 10s-recall" -config_file="config_defaultnet.json" -runtime=25 -recall_start=20
+python ./brianNetworkConsolidation.py -s_desc="defaultnet 10s-recall" -config_file="config_defaultnet-like_no_stim.json" -runtime=25 -recall_start=20

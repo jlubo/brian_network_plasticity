@@ -1,0 +1,8 @@
+__pycache__/
+tmp/
+output/
+.ipynb_checkpoints/
+*_data*/
+data_*/
+benchmark_*/
+extract/*.txt

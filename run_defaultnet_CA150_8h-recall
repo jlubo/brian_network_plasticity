@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python ./brianNetworkConsolidation.py -s_desc="defaultnet 8h-recall" -config_file="config_defaultnet.json" -runtime=28820 -recall_start=28810
